@@ -1,0 +1,52 @@
+GET http://localhost:3000/products
+
+###
+
+GET http://localhost:3000/products/2
+
+###
+
+POST http://localhost:3000/products
+content-type: application/json
+
+{
+  "name": "Cool T-Rex",
+  "price": 100000000,
+  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqe1aq5JvUeO7DH7XE4K1nyMrrJyd_v_AyEQ&usqp=CAU",
+  "description": "You wish you were this cool."
+}
+
+###
+
+PATCH http://localhost:3000/products/12
+content-type: application/json
+
+{
+  "description": "Pretty self-explanatory really. It's a plate of spaghetti."
+}
+
+###
+
+DELETE http://localhost:3000/products/3
+
+
+
+# puts "Please enter a product name:"
+# user_name = gets.chomp
+
+# puts "Please enter a price for the item:"
+# user_price = gets.chomp
+
+# puts "Please enter an image url:"
+# user_url = gets.chomp
+
+# puts = "Please enter a description for the item:"
+# user_description = gets.chomp
+
+# {
+#   "name": user_name,
+#   "price": user_price,
+#   "image_url": user_url,
+#   "description": user_description
+# }
+
