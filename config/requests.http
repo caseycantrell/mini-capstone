@@ -1,52 +1,67 @@
+###### PRODUCTS #######
+
+### INDEX
 GET http://localhost:3000/products
 
-###
+### SHOW
 
-GET http://localhost:3000/products/2
+GET http://localhost:3000/products/9
+Content-Type: application/json
 
-###
+### CREATE
 
 POST http://localhost:3000/products
 content-type: application/json
 
 {
-  "name": "Cool T-Rex",
-  "price": 100000000,
-  "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqe1aq5JvUeO7DH7XE4K1nyMrrJyd_v_AyEQ&usqp=CAU",
-  "description": "You wish you were this cool."
+  "name": "",
+  "price": ,
+  "image_url": "",
+  "description": ""
 }
 
-###
-
+### UPDATE
 PATCH http://localhost:3000/products/12
 content-type: application/json
 
 {
-  "description": "Pretty self-explanatory really. It's a plate of spaghetti."
+  "supplier_id": 1
 }
 
-###
+### DESTROY
 
-DELETE http://localhost:3000/products/3
+DELETE http://localhost:3000/products/20
 
 
+##### SUPPLIERS #####
 
-# puts "Please enter a product name:"
-# user_name = gets.chomp
+### INDEX
+GET http://localhost:3000/suppliers
 
-# puts "Please enter a price for the item:"
-# user_price = gets.chomp
+### SHOW
 
-# puts "Please enter an image url:"
-# user_url = gets.chomp
+GET http://localhost:3000/suppliers/9
+Content-Type: application/json
 
-# puts = "Please enter a description for the item:"
-# user_description = gets.chomp
+### CREATE
 
-# {
-#   "name": user_name,
-#   "price": user_price,
-#   "image_url": user_url,
-#   "description": user_description
-# }
+POST http://localhost:3000/suppliers
+content-type: application/json
 
+{
+  "name": "",
+  "email": ,
+  "phone_number": ""
+}
+
+### UPDATE
+PATCH http://localhost:3000/suppliers/12
+content-type: application/json
+
+{
+  "name": ""
+}
+
+### DESTROY
+
+DELETE http://localhost:3000/suppliers/3
