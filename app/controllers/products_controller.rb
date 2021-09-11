@@ -1,38 +1,50 @@
 class ProductsController < ApplicationController
 
   def index
-    products = Product.all
-    render json: products
+    if current_user
+      products = Product.all
+      render json: products
+    else 
+      render json: {message: "You ain't even logged in dude."}
+    end
   end
 
   def show
-    product = Product.find(params[:id])
-    render json: product
+    if current_user
+      product = Product.find(params[:id])
+      render json: product
+    else 
+      render json: {message: "You must be logged in to continue."}
+    end
   end
 
   def create
     product = Product.new(
       name: params[:name],
       price: params[:price],
-      image_url: params[:image_url],
       description: params[:description],
       quantity: params[:quantity],
       supplier_id: params[:supplier_id]
     )
-    product.save
-    render json: product
+    if product.save
+      render json: product
+    else
+      render json: product.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   def update
     product = Product.find(params[:id])
     product.name = params[:name] || product.name
     product.price = params[:price] || product.price
-    product.image_url= params[:image_url] || product.image_url
     product.description = params[:description] || product.description
     product.quantity = params[:quantity] || product.quantity
     product.supplier_id = params[:supplier_id] || product.supplier_id
-    product.save
-    render json: product
+    if product.save
+      render json: product
+    else
+      render json: product.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   def destroy
