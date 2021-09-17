@@ -1,38 +1,32 @@
 class CartedProductsController < ApplicationController
 
+before_action :authenticate_user
 
   def create
-    carted = CartedProduct.new(
+    carted_product = CartedProduct.new(
       user_id: current_user.id,
       product_id: params[:product_id],
-      quantity: params[:quantity],
-      order_id: nil,
-      status: "carted"
+      quantity: params[:quantity]
     )
-    if carted.save
-      render json: carted
+    if carted_product.save
+      render json: carted_product
     else
-      render json: carted.errors.full_messages
+      render json: carted_product.errors.full_messages
     end
   end
 
 
   def index
-    carted = CartedProduct.all
-    render json: carted 
+
+    carted_product = current_user.carted_products.where(status: "carted")
+    render json: carted_product 
   end
 
   def update
-    carted = CartedProduct.find(params[:id])
-    carted.user_id = params[:user_id] || carted.user_id
-    carted.product_id = params[:product_id] || carted.product_id
-    carted.quantity = params[:quantity] || carted.quantity
-    carted.status = "removed"
-    if carted.save
-      render json: carted
-    else
-      render json: carted.errors.full_messages, status: :unprocessable_entity
-    end
+    carted_product = CartedProduct.find(params[:id])
+    carted_product.status = "removed"
+    carted_product.save
+    render json: {message: "Carted product successfully removed"}
   end
 
 end

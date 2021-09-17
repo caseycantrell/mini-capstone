@@ -8,7 +8,7 @@ GET {{hostname}}/products?category=Food
 
 ### SHOW
 
-GET {{hostname}}/products/9
+GET {{hostname}}/products/13
 Content-Type: application/json
 
 ### CREATE
@@ -26,11 +26,12 @@ content-type: application/json
 }
 
 ### UPDATE
-PATCH {{hostname}}/products/12
+PATCH {{hostname}}/products/18
+Authorization: Bearer {{jwt}}
 content-type: application/json
 
 {
-  "supplier_id": 1
+  "price": 4
 }
 
 ### DESTROY
@@ -214,8 +215,11 @@ Authorization: Bearer {{jwt}}
 content-type: application/json
 
 {
-  "user_id": 1,
   "product_id": 13,
-  "quantity": 2,
-  "status" ""
+  "quantity": 2
 }
+
+#### UPDATE
+POST {{hostname}}/carted_products/1
+Authorization: Bearer {{jwt}}
+content-type: application/json
