@@ -1,0 +1,221 @@
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MzE5MzA3OTZ9.ZC3dncK8VKdh6z6CDjGtq2um0tESYMFpGbYjcnCyoDg
+@hostname = http://localhost:3000
+
+###### PRODUCTS #######
+
+### INDEX
+GET {{hostname}}/products?category=Food
+
+### SHOW
+
+GET {{hostname}}/products/9
+Content-Type: application/json
+
+### CREATE
+
+POST {{hostname}}/products
+Authorization: Bearer {{jwt}}
+content-type: application/json
+
+{
+  "name": "another new thing",
+  "price": 50,
+  "description": "this is a another thing",
+  "quantity": 2,
+  "supplier_id": 1
+}
+
+### UPDATE
+PATCH {{hostname}}/products/12
+content-type: application/json
+
+{
+  "supplier_id": 1
+}
+
+### DESTROY
+
+DELETE {{hostname}}/products/24
+Content-Type: application/json
+Authorization: Bearer {{jwt}}
+
+
+
+
+
+
+
+
+
+
+##### SUPPLIERS #####
+
+### INDEX
+GET {{hostname}}/suppliers
+
+### SHOW
+
+GET {{hostname}}/suppliers/9
+Content-Type: application/json
+
+### CREATE
+
+POST {{hostname}}/suppliers
+content-type: application/json
+
+{
+  "name": "",
+  "email": ,
+  "phone_number": ""
+}
+
+### UPDATE
+PATCH {{hostname}}/suppliers/1
+content-type: application/json
+
+{
+  "name": ""
+}
+
+### DESTROY
+
+DELETE {{hostname}}/suppliers/3
+
+######## IMAGES #######
+
+### INDEX
+
+GET {{hostname}}/images
+
+### SHOW
+
+GET {{hostname}}/images/
+Content-Type: application/json
+
+### CREATE
+
+POST {{hostname}}/images
+content-type: application/json
+
+{
+  "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKKmRdK42wAB3NLtt_WSpfr_SxRx90JmR5Xg&usqp=CAU",
+  "product_id": 18 
+}
+
+### UPDATE
+
+PATCH {{hostname}}/images/
+content-type: application/json
+
+{
+  "url": ""
+}
+
+### DESTROY
+
+DELETE {{hostname}}/images/20
+
+
+
+
+
+
+
+
+
+
+
+
+###### USERS ######
+
+### CREATE
+POST {{hostname}}/users
+Content-Type: application/json
+
+  {
+    "name": "Casey",
+    "email": "casey@gmail.com",
+    "password": "password",
+    "password_confirmation": "password"
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+##### SESSIONS ##### 
+
+### CREATE (login)
+
+POST {{hostname}}/sessions
+Content-Type: application/json
+
+{
+  "email": "casey@gmail.com",
+  "password": "password"
+}
+
+
+
+
+
+
+
+
+##### ORDERS ######
+
+### CREATE
+
+POST {{hostname}}/orders
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+
+{
+  "user_id": 2,
+  "product_id": 18,
+  "quantity": 2
+}
+
+### SHOW
+
+GET {{hostname}}/orders/3
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+### INDEX
+
+GET {{hostname}}/orders/
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+
+####### CARTED PRODUCTS
+
+
+### INDEX
+
+GET {{hostname}}/carted_products
+Authorization: Bearer {{jwt}}
+Content-Type: application/json
+
+
+### CREATE
+
+POST {{hostname}}/carted_products
+Authorization: Bearer {{jwt}}
+content-type: application/json
+
+{
+  "user_id": 1,
+  "product_id": 13,
+  "quantity": 2,
+  "status" ""
+}

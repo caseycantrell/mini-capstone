@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get "/suppliers/:supplier_id" => "suppliers#show"
 
+  ####### IMAGES
+
   get "/images" => "images#index"
 
   get "/images/:id" => "images#show"
@@ -39,7 +41,12 @@ Rails.application.routes.draw do
 
   get "/orders/:id" => "orders#show"
   
+  ######## CARTED PRODUCTS
+
+  post "/carted_products" => "carted_products#create"
   
+  get "/carted_products" => "carted_products#index"
+
 
 end
 

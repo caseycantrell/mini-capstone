@@ -1,21 +1,19 @@
 class ProductsController < ApplicationController
 
+  before_action :authenticate_admin, except: [:index, :show]
+
   def index
-    if current_user
       products = Product.all
+      if params[:category]
+        category = Category.find_by(name: params[:category])
+        products = category.products
+      end
       render json: products
-    else 
-      render json: {message: "You ain't even logged in dude."}
-    end
   end
 
   def show
-    if current_user
       product = Product.find(params[:id])
       render json: product
-    else 
-      render json: {message: "You must be logged in to continue."}
-    end
   end
 
   def create

@@ -1,12 +1,10 @@
 class OrdersController < ApplicationController
 
+  before_action :authenticate_user
+
   def index
-    if current_user
-      orders = Order.all
-      render json: orders 
-    else
-      render json: {message: "You must be logged in."}
-    end
+    orders = current_user.orders
+    render json: orders 
   end
 
   def create
@@ -26,16 +24,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if current_user
       order = Order.find(params[:id])
       if order.user_id == current_user.id
         render json: order
       else
         render json: {message: "That's not your order!"}
       end
-    else
-      render json: {message: "You must be logged in."}
-    end
   end
 
 end
