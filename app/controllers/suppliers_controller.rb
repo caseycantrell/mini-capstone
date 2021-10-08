@@ -6,7 +6,7 @@ class SuppliersController < ApplicationController
   end
 
   def show
-    supplier = Supplier.find(params[:supplier_id])
+    supplier = Supplier.find(params[:id])
     render json: supplier
   end
   

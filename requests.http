@@ -1,10 +1,10 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MzE5MzA3OTZ9.ZC3dncK8VKdh6z6CDjGtq2um0tESYMFpGbYjcnCyoDg
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MzM3MTU5NjJ9.tj_kLkWlJ5MtfQTZma7o86RzOhfUbrCFyPYl6egLdd0
 @hostname = http://localhost:3000
 
 ###### PRODUCTS #######
 
 ### INDEX
-GET {{hostname}}/products?category=Food
+GET {{hostname}}/products
 
 ### SHOW
 
@@ -18,10 +18,10 @@ Authorization: Bearer {{jwt}}
 content-type: application/json
 
 {
-  "name": "another new thing",
-  "price": 50,
-  "description": "this is a another thing",
-  "quantity": 2,
+  "name": "test thing",
+  "price": 500,
+  "description": "this is a another test thing",
+  "quantity": 4,
   "supplier_id": 1
 }
 
@@ -31,12 +31,12 @@ Authorization: Bearer {{jwt}}
 content-type: application/json
 
 {
-  "price": 4
+  "price": 5
 }
 
 ### DESTROY
 
-DELETE {{hostname}}/products/24
+DELETE {{hostname}}/products/25
 Content-Type: application/json
 Authorization: Bearer {{jwt}}
 
@@ -56,7 +56,7 @@ GET {{hostname}}/suppliers
 
 ### SHOW
 
-GET {{hostname}}/suppliers/9
+GET {{hostname}}/suppliers/1
 Content-Type: application/json
 
 ### CREATE
@@ -65,9 +65,9 @@ POST {{hostname}}/suppliers
 content-type: application/json
 
 {
-  "name": "",
-  "email": ,
-  "phone_number": ""
+  "name": "Da Supply Bois",
+  "email": "supplybois@gmail.com",
+  "phone_number": "1-800-SUPPLYBOI"
 }
 
 ### UPDATE
