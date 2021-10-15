@@ -1,4 +1,4 @@
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MzM3MTU5NjJ9.tj_kLkWlJ5MtfQTZma7o86RzOhfUbrCFyPYl6egLdd0
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE2MzQ0MTcyMTB9.rpaXwDLCZeirXL-10cOSSqP-fMMmFGwyUuv82XZZ4o8
 @hostname = http://localhost:3000
 
 ###### PRODUCTS #######
@@ -105,7 +105,7 @@ content-type: application/json
 
 ### UPDATE
 
-PATCH {{hostname}}/images/
+PATCH {{hostname}}/images/1
 content-type: application/json
 
 {
@@ -122,11 +122,6 @@ DELETE {{hostname}}/images/20
 
 
 
-
-
-
-
-
 ###### USERS ######
 
 ### CREATE
@@ -134,16 +129,11 @@ POST {{hostname}}/users
 Content-Type: application/json
 
   {
-    "name": "Casey",
-    "email": "casey@gmail.com",
-    "password": "password",
-    "password_confirmation": "password"
+    "name": "test",
+    "email": "test@test.com",
+    "password": "test",
+    "password_confirmation": "test"
   }
-
-
-
-
-
 
 
 
@@ -159,8 +149,8 @@ POST {{hostname}}/sessions
 Content-Type: application/json
 
 {
-  "email": "casey@gmail.com",
-  "password": "password"
+  "email": "test@test.com",
+  "password": "test"
 }
 
 

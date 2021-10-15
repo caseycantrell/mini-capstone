@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   post "/images" => "images#create"
 
+  patch "/images/:id" => "images#update"
+
   ######## USERS
 
   post "/users" => "users#create"

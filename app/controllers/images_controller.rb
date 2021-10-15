@@ -18,4 +18,16 @@ class ImagesController < ApplicationController
     image.save
     render json: image
   end
+
+  def update
+    image = Image.find(params[:id])
+    image.url = params[:url] || image.url
+   
+    if image.save
+      render json: image
+    else
+      render json: image.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
 end
